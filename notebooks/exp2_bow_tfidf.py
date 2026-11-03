@@ -148,7 +148,8 @@ def train_and_evaluate(df):
                         # Log model
                         # mlflow.sklearn.log_model(model, "model")
                         input_example = X_test[:5] if not scipy.sparse.issparse(X_test) else X_test[:5].toarray()
-                        mlflow.sklearn.log_model(model, "model", input_example=input_example)
+                        # mlflow.sklearn.log_model(model, "model", input_example=input_example)
+                        mlflow.sklearn.log_model(sk_model=model,name="model",input_example=input_example,serialization_format="cloudpickle")
 
                         # print results for verification
                         print(f"\nAlgorithm: {algo_name}, Vectorizer: {vec_name}")
